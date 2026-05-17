@@ -9,63 +9,166 @@ export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
       { title: "Menu — Café Lélunar" },
-      { name: "description", content: "All-day breakfast, Mediterranean classics, coffee, and sweets at Café Lélunar in Blacktown NSW." },
+      { name: "description", content: "All-day breakfast, toasted sandwiches, melts, coffee and Lélunar signature drinks in Blacktown NSW." },
       { property: "og:title", content: "Menu — Café Lélunar" },
-      { property: "og:description", content: "From Canadian pancakes to lamb souvlaki — explore the Lélunar menu." },
+      { property: "og:description", content: "Bruschetta, pancakes, melts, sandwiches and Lélunar signature lemonades." },
     ],
     links: [{ rel: "canonical", href: "/menu" }],
   }),
 });
 
 type Item = { name: string; desc?: string; price?: string; tag?: string };
+type Section = { title: string; image?: string; note?: string; items: Item[] };
 
-const sections: { title: string; image?: string; items: Item[] }[] = [
+const sections: Section[] = [
   {
-    title: "All-Day Breakfast",
-    image: eggs,
-    items: [
-      { name: "Eggs Benedict", desc: "Poached eggs, smoked salmon or bacon, hollandaise", price: "24" },
-      { name: "Scrambled Eggs", desc: "Free-range eggs, sourdough toast", price: "16", tag: "Popular" },
-      { name: "Avo Stack", desc: "Smashed avocado, feta, heirloom tomato, seeds", price: "22" },
-      { name: "Bacon & Egg Roll", desc: "Brioche bun, crispy bacon, BBQ relish", price: "14" },
-      { name: "Canadian Bacon", desc: "Maple-glazed bacon, hash, two eggs", price: "23" },
-      { name: "Steak & Egg", desc: "Grilled steak, asparagus, hollandaise", price: "32" },
-    ],
-  },
-  {
-    title: "Sweet Things",
-    image: hero,
-    items: [
-      { name: "Canadian Pancakes", desc: "Maple syrup, berries, double cream", price: "21", tag: "Signature" },
-      { name: "Hotcakes with Fairy Floss", desc: "Caramelised banana, seasonal fruit, fairy floss", price: "24" },
-      { name: "Brioche French Toast", desc: "Figs, berries, chocolate drizzle, mascarpone", price: "23" },
-      { name: "Macaroons", desc: "Selection of four", price: "12" },
-      { name: "Ham & Cheese Croissant", desc: "All-butter pastry, leg ham, gruyère", price: "11" },
-    ],
-  },
-  {
-    title: "Mediterranean & Mains",
+    title: "Bruschetta",
     image: toast,
     items: [
-      { name: "Lamb Souvlaki", desc: "Marinated lamb, pita, tzatziki, salad", price: "26" },
-      { name: "Penne Boscaiola", desc: "Bacon, mushroom, cream, parmesan", price: "24" },
-      { name: "Salt & Pepper Squid", desc: "Lemon aioli, rocket", price: "22" },
-      { name: "Seafood Basket", desc: "Squid, prawns, fish, chips, tartare", price: "28" },
-      { name: "Chicken Burger & Fries", desc: "Buttermilk chicken, slaw, chipotle mayo", price: "23" },
-      { name: "Grilled Vegetable Sandwich", desc: "Sourdough, pesto, halloumi", price: "18" },
-      { name: "Chicken Roll", desc: "Grilled chicken, aioli, cos lettuce", price: "15" },
+      { name: "Tomato Bruschetta", desc: "Tomato, Spanish onion, olive oil, fetta, drizzled with balsamic reduction on sourdough toast", price: "14.90" },
+      { name: "Light Bruschetta", desc: "Tomato, avocado, ricotta cheese, basil pesto on sourdough toast", price: "14.90" },
+      { name: "Brekky Bruschetta", desc: "Bacon, avocado & cherry tomato salsa, poached eggs & balsamic reduction on sourdough toast", price: "19.90", tag: "Popular" },
+      { name: "Smoked Salmon", desc: "Avocado, capsicum, Spanish onion & rocket topped with herb mayo on sourdough toast", price: "20.90" },
     ],
   },
   {
-    title: "Coffee & Drinks",
+    title: "Healthy",
+    image: eggs,
+    items: [
+      { name: "Açaí Bowl", desc: "Seasonal fruits, coconut flakes, chia seed and granola", price: "18.90" },
+      { name: "Granola and Yoghurt", desc: "Seasonal fruits, coconut flakes and granola", price: "18.90" },
+      { name: "Healthy Brekky", desc: "Avocado, fetta, pesto, roasted tomato, Spanish onion, corn on multigrain", price: "17.90" },
+    ],
+  },
+  {
+    title: "Pancakes & Waffles",
+    image: hero,
+    items: [
+      { name: "Pancake / Waffles", desc: "With crispy chicken served with sriracha butter and maple syrup", price: "22.90", tag: "Signature" },
+      { name: "Fruity Pancake / Waffles", desc: "Seasonal fruits, maple syrup and ice cream", price: "19.90" },
+      { name: "Just Pancake / Waffle", desc: "With maple syrup", price: "15.90" },
+    ],
+  },
+  {
+    title: "Toasted Sandwiches & Wraps",
+    image: toast,
+    note: "Sandwiches served on focaccia, white or multigrain bread",
+    items: [
+      { name: "Pesto Chicken", desc: "Grilled or crispy chicken, lettuce, cheese and home-made pesto sauce", price: "14.90" },
+      { name: "Club Sandwich", desc: "Ham, egg, cheese, tomato, lettuce and plain mayo", price: "15.90" },
+      { name: "Grilled Chicken & Avo", desc: "With lettuce, cheese and herb mayo", price: "14.90" },
+      { name: "Crispy Chicken", desc: "With lettuce, tomato & aioli sauce", price: "14.90" },
+      { name: "Roasted Eggplant", desc: "With roasted capsicum, grilled mushroom, lettuce and herb mayo", price: "14.90" },
+      { name: "B.L.A.T", desc: "Bacon, lettuce, avocado, tomato & herb mayo", price: "14.90" },
+      { name: "Ham & Cheese", desc: "With lettuce and aioli", price: "13.90" },
+      { name: "Smoked Salmon", desc: "With cream cheese, onion, pickle", price: "15.90" },
+    ],
+  },
+  {
+    title: "Open Melts",
+    image: eggs,
+    items: [
+      { name: "Plain Melt", price: "10.90" },
+      { name: "Hawaiian Melt", price: "15.90" },
+      { name: "Ham Melt", price: "14.90" },
+      { name: "Mushroom Melt", price: "15.90" },
+      { name: "Chicken & Avocado Melt", price: "17.90" },
+      { name: "Tomato Melt", price: "11.90" },
+      { name: "Avocado Melt", price: "14.90" },
+      { name: "Bacon Melt", price: "15.90" },
+      { name: "Chicken Melt", price: "15.90" },
+    ],
+  },
+  {
+    title: "Traditional Sandwiches",
+    image: toast,
+    note: "Served on white or multigrain",
+    items: [
+      { name: "Cheese", price: "8.90" },
+      { name: "Ham, Cheese", price: "9.90" },
+      { name: "Ham, Cheese, Tomato", price: "10.90" },
+      { name: "Cheese, Tomato", price: "9.90" },
+      { name: "Ham, Tomato", price: "9.90" },
+    ],
+  },
+  {
+    title: "Toast / Croissant / Focaccia",
+    image: hero,
+    note: "Add cheese +$1.00 · ham & cheese +$2.00 · ham, cheese & avocado +$3.00",
+    items: [
+      { name: "Banana Bread", price: "6.90" },
+      { name: "Raisin (2pc)", price: "5.90" },
+      { name: "White Bread / Multigrain / Turkish", price: "6.90" },
+      { name: "English Muffin / Sourdough", price: "6.90" },
+      { name: "Plain Croissant / Focaccia", price: "7.90" },
+    ],
+  },
+  {
+    title: "Coffee",
+    image: coffee,
+    note: "Extras: caramel, vanilla, hazelnut, extra shot, soy milk, almond milk, lactose-free milk, oat milk, decaf — $0.80",
+    items: [
+      { name: "Cappuccino", desc: "Sml $4.20 · Lrg $4.90", tag: "Popular" },
+      { name: "Café Latte", desc: "Sml $4.20 · Lrg $4.90" },
+      { name: "Flat White", desc: "Sml $4.20 · Lrg $4.90" },
+      { name: "Long Black", desc: "Sml $4.20 · Lrg $4.90" },
+      { name: "Café Mocha", desc: "Sml $4.70 · Lrg $5.20" },
+      { name: "White Mocha", desc: "Sml $4.80 · Lrg $5.20" },
+      { name: "Espresso", desc: "Sml $3.80" },
+      { name: "Macchiato", desc: "Sml $4.20" },
+      { name: "Piccolo Latte", desc: "Sml $4.20" },
+      { name: "Vienna Coffee", desc: "Sml $4.70" },
+      { name: "Affogato with Flavour", desc: "$6.50" },
+    ],
+  },
+  {
+    title: "Non-Caffeine & Teas",
     image: coffee,
     items: [
-      { name: "Cappuccino", desc: "House blend, velvety microfoam", price: "5", tag: "Popular" },
-      { name: "Mocha", desc: "Espresso, chocolate, steamed milk", price: "5.5" },
-      { name: "Flat White", price: "5" },
-      { name: "Long Black", price: "4.5" },
-      { name: "Chai Latte", desc: "Spiced loose-leaf", price: "5.5" },
-      { name: "Iced Latte", price: "6" },
+      { name: "Hot Chocolate", desc: "Sml $4.70 · Lrg $5.20" },
+      { name: "White Chocolate", desc: "Sml $4.90 · Lrg $5.50" },
+      { name: "Chai Latte", desc: "Sml $4.70 · Lrg $5.20" },
+      { name: "Taro Latte", desc: "Sml $4.70 · Lrg $5.20" },
+      { name: "Green Tea Latte", desc: "Sml $4.70 · Lrg $5.20" },
+      { name: "Pot of Tea", desc: "English Breakfast · Earl Grey · Green Sencha · Peppermint · Chai · Jasmine · Chamomile", price: "5.00" },
+    ],
+  },
+  {
+    title: "Cold Beverages",
+    image: coffee,
+    items: [
+      { name: "Milkshake (Kids)", price: "5.00" },
+      { name: "Milkshake", desc: "Chocolate, strawberry, caramel, vanilla, banana, lime", price: "7.00" },
+      { name: "Thickshake", price: "8.00" },
+      { name: "Iced Chocolate / Coffee / Mocha / Green Tea / Taro / Milo", desc: "With whipped cream and ice cream", price: "8.00" },
+      { name: "Iced Chai", price: "8.00" },
+      { name: "Iced Latte / Long Black", desc: "No whipped cream or ice cream", price: "7.00" },
+      { name: "Iced Tea", desc: "Peach or Berry", price: "8.00" },
+      { name: "Frosty Lemonade", desc: "Mango or Berry", price: "8.00" },
+      { name: "Smoothies", desc: "Mango, Berry or Banana", price: "8.50" },
+      { name: "Frappés", desc: "Mango or Berry", price: "8.00" },
+    ],
+  },
+  {
+    title: "Lélunar Signature",
+    image: hero,
+    items: [
+      { name: "Blue Lemonade", price: "8.00", tag: "Signature" },
+      { name: "Hibiscus Grapefruit", price: "8.00" },
+      { name: "Hibiscus Lemonade", price: "8.00" },
+      { name: "Green Grapes & Apple", price: "8.00" },
+      { name: "Green Apple Lemonade", price: "8.00" },
+    ],
+  },
+  {
+    title: "Fresh Juice",
+    image: coffee,
+    note: "No ice — $1.00 extra",
+    items: [
+      { name: "Orange Juice", price: "8.00" },
+      { name: "Apple Juice", price: "8.00" },
+      { name: "Watermelon Juice", price: "8.00" },
+      { name: "Apple, Beetroot, Celery & Carrot", price: "8.50" },
     ],
   },
 ];
@@ -76,7 +179,7 @@ function MenuPage() {
       <div className="text-center max-w-2xl mx-auto mb-20">
         <p className="text-xs uppercase tracking-[0.25em] text-accent mb-5">— The menu</p>
         <h1 className="font-display text-6xl md:text-7xl leading-[0.95]">From dawn<br/><em>to dusk.</em></h1>
-        <p className="mt-6 text-muted-foreground">Breakfast served all day. Lunch from 11. Coffee from open to close. $20–40 per person.</p>
+        <p className="mt-6 text-muted-foreground">All-day breakfast. Toasted sandwiches and melts from open to close. Coffee, signature lemonades and fresh juice. Please order and pay at the counter — 1% EFTPOS and 10% public holiday surcharge applies.</p>
       </div>
 
       <div className="space-y-28">
@@ -88,15 +191,16 @@ function MenuPage() {
               </div>
             </div>
             <div className="lg:col-span-7">
-              <h2 className="font-display text-4xl md:text-5xl mb-10 flex items-baseline gap-4">
-                <span className="text-accent text-base">0{idx + 1}</span>
+              <h2 className="font-display text-4xl md:text-5xl mb-4 flex items-baseline gap-4">
+                <span className="text-accent text-base">{String(idx + 1).padStart(2, "0")}</span>
                 <em>{sec.title}</em>
               </h2>
+              {sec.note && <p className="text-xs uppercase tracking-widest text-muted-foreground mb-8">{sec.note}</p>}
               <ul className="divide-y divide-border">
                 {sec.items.map(item => (
                   <li key={item.name} className="py-5 flex items-start justify-between gap-6">
                     <div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 flex-wrap">
                         <h3 className="font-display text-xl">{item.name}</h3>
                         {item.tag && <span className="text-[10px] uppercase tracking-widest bg-accent text-accent-foreground px-2 py-0.5 rounded-full">{item.tag}</span>}
                       </div>
